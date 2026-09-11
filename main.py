@@ -24,7 +24,7 @@ def run_wade(source: str, model_name: str = "yolov8s-pose.pt", pool_name: str = 
     # Initialize Modules
     pose_detector = PoseDetector(model_name=model_name)
     motion_analyzer = MotionFluxAnalyzer()
-    distress_engine = DistressEngine(alert_window_sec=3.5, target_fps=30.0)
+    distress_engine = DistressEngine(alert_window_sec=2.0, target_fps=30.0)
     hud_renderer = TacticalHUDRenderer(pool_name=pool_name)
 
     # Video Source (0 = webcam, or file path)
@@ -62,8 +62,8 @@ def run_wade(source: str, model_name: str = "yolov8s-pose.pt", pool_name: str = 
             ret, frame = cap.read()
 
             if not ret:
-                # Loop video for continuous presentation demo
-                if not source.isdigit():
+                # Loop video for continuous interactive presentation demo
+                if not source.isdigit() and not save_output and not headless:
                     cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
                     continue
                 else:
@@ -99,7 +99,8 @@ def run_wade(source: str, model_name: str = "yolov8s-pose.pt", pool_name: str = 
                     centroid=det["centroid"],
                     torso_angle_deg=det["torso_angle"],
                     splash_energy=splash_energy,
-                    current_time=t_loop_start
+                    current_time=t_loop_start,
+                    bbox=det["bbox"]
                 )
 
                 swimmer_state["bbox"] = det["bbox"]
@@ -108,7 +109,7 @@ def run_wade(source: str, model_name: str = "yolov8s-pose.pt", pool_name: str = 
 
             # Cleanup lost tracks
             motion_analyzer.cleanup_missing_tracks(active_ids)
-            distress_engine.cleanup(active_ids)
+            distress_engine.cleanup(active_ids, current_time=t_loop_start)
 
             # Calculate Rolling Display FPS
             t_loop_end = time.time()

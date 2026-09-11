@@ -92,8 +92,9 @@ class TacticalHUDRenderer:
 
             # If Critical, Draw Emergency Pulsing Beacon Box Above Head
             if state == "CRITICAL":
-                crit_scale = max(0.48, 0.65 * scale)
-                alert_banner = "🚨 DROWNING ANOMALY DETECTED"
+                crit_scale = max(0.44, 0.60 * scale)
+                alert_banner = s.get("reason", "CRITICAL COLLAPSE / FALL")
+                alert_banner = alert_banner.replace("🚨", "[!]").replace("⚠️", "[*]").strip()
                 (aw, ah), _ = cv2.getTextSize(alert_banner, cv2.FONT_HERSHEY_SIMPLEX, crit_scale, 2)
                 bx = max(10, x1 - 20)
                 by = max(ah + 10, y1 - 20)
@@ -148,13 +149,13 @@ class TacticalHUDRenderer:
         space_avail = (w - tw) - brand_w
 
         if is_crit:
-            status_text = "🚨 ALARM: CRITICAL DISTRESS"
+            status_text = "[!] ALARM: CRITICAL DISTRESS"
             status_color = self.COLOR_CRITICAL
         elif is_watch:
-            status_text = "⚠️ WATCH: ELEVATED DISTRESS"
+            status_text = "[*] WATCH: ELEVATED DISTRESS"
             status_color = self.COLOR_WATCH
         else:
-            status_text = "● ALL ZONES CLEAR"
+            status_text = "[+] ALL ZONES CLEAR"
             status_color = self.COLOR_SAFE
 
         (sw, _), _ = cv2.getTextSize(status_text, cv2.FONT_HERSHEY_SIMPLEX, font_scale, thickness)

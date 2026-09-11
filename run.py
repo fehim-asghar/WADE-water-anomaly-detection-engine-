@@ -44,37 +44,59 @@ def browse_file() -> str:
 
 def main():
     os.system("cls" if os.name == "nt" else "clear")
-    print("=" * 60)
-    print("💧 WADE — Interactive Demo Launcher (Zero Friction)")
-    print("=" * 60)
-    print("  [1] 🚨 Real Drowning Incident Drill (Water Rescue)")
-    print("  [2] 🏊 Real Overhead Community Pool (CCTV Angle)")
-    print("  [3] 📹 Live Interactive Webcam Mode (Test Yourself on Stage!)")
-    print("  [4] 📂 Browse Any Video File from Computer (File Picker)")
-    print("  [5] 🌐 Play directly from YouTube Link (NO Downloading!)")
-    print("=" * 60)
+    print("=" * 65)
+    print("🛡️  CARE / WADE — Autonomous CCTV Fall & Anomaly Sentinel")
+    print("    [Team larperchud // Real-Time RTX 4050 Acceleration]")
+    print("=" * 65)
+    print("  [1] 🏪 Store Entrance Slip & Fall          (Camera 01 — Real CCTV)")
+    print("  [2] 🏥 Hospital Corridor Patient Collapse   (Camera 08 — 1080p HD)")
+    print("  [3] 🍽️ Restaurant Hallway Sudden Collapse  (Camera 03 — Real CCTV)")
+    print("  [4] 🏢 Office Reception Door Slip & Fall    (CCTV 02)")
+    print("  [5] ⚠️ Kitchen Wet-Floor Severe Slip        (Camera 01)")
+    print("  [6] ☕ Cafeteria Breakroom Slip & Fall      (Camera 04)")
+    print("  [7] 💊 Pharmacy Dispensary Worker Collapse  (Camera 13)")
+    print("  -------------------------------------------------------------")
+    print("  [8] 📹 Live Interactive Webcam Mode         (Test Yourself Live!)")
+    print("  [9] 📂 Browse Any Video File from Computer  (Windows File Picker)")
+    print(" [10] 🌐 Play directly from YouTube Link      (Direct Stream, No DL)")
+    print("=" * 65)
 
-    choice = input("\n👉 Choose option (1-5) [Default 1]: ").strip() or "1"
+    choice = input("\n👉 Choose scenario (1-10) [Default 1]: ").strip() or "1"
 
     source = ""
-    pool_label = "OLYMPIC POOL - CCTV 04"
+    pool_label = "SURVEILLANCE SENTINEL"
 
     if choice == "1":
-        source = "assets/drowning_incident.mp4"
-        pool_label = "RESCUE ZONE - CCTV 02"
+        source = "assets/clean_store_fall.mp4"
+        pool_label = "STORE ENTRANCE - CAM 01"
     elif choice == "2":
-        source = "assets/public_pool_aerial.mp4"
-        pool_label = "COMMUNITY POOL - CCTV 01"
+        source = "assets/cctv_hospital_fall.mp4"
+        pool_label = "HOSPITAL WARD - CAM 08"
     elif choice == "3":
+        source = "assets/clean_cctv_collapse.mp4"
+        pool_label = "RESTAURANT CORRIDOR - CAM 03"
+    elif choice == "4":
+        source = "assets/cctv_reception_fall.mp4"
+        pool_label = "RECEPTION ENTRANCE - CCTV 02"
+    elif choice == "5":
+        source = "assets/cctv_wetfloor_slip.mp4"
+        pool_label = "COMMERCIAL KITCHEN - CAM 01"
+    elif choice == "6":
+        source = "assets/cctv_staged_fall.mp4"
+        pool_label = "CAFETERIA BREAKROOM - CAM 04"
+    elif choice == "7":
+        source = "assets/security_fall_2.mp4"
+        pool_label = "PHARMACY DISPENSARY - CAM 13"
+    elif choice == "8":
         source = "0"
         pool_label = "STAGE WEBCAM - LIVE TEST"
-    elif choice == "4":
+    elif choice == "9":
         source = browse_file()
         if not source:
             print("[!] No file selected. Exiting.")
             return
         pool_label = os.path.basename(source)
-    elif choice == "5":
+    elif choice == "10":
         yt_url = input("\n🔗 Paste YouTube URL: ").strip()
         if not yt_url:
             print("[!] Empty URL.")
@@ -86,9 +108,10 @@ def main():
             print(f"[!] Could not stream from YouTube: {e}")
             return
     else:
-        source = "assets/drowning_incident.mp4"
+        source = "assets/clean_store_fall.mp4"
+        pool_label = "STORE ENTRANCE - CAM 01"
 
-    print(f"\n🚀 Launching WADE on [{pool_label}]...")
+    print(f"\n🚀 Launching CARE Sentinel on [{pool_label}]...")
     run_wade(source=source, pool_name=pool_label)
 
 
