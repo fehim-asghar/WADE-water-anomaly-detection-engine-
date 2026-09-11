@@ -47,9 +47,9 @@ def main():
     print("=" * 60)
     print("💧 WADE — Interactive Demo Launcher (Zero Friction)")
     print("=" * 60)
-    print("  [1] 🚨 Instant Drowning Incident Demo (CCTV Drill)")
-    print("  [2] 🏊 Normal Lap Swimming Demo (Clear Pool)")
-    print("  [3] 📹 Live Webcam Mode (Test Yourself on Stage!)")
+    print("  [1] 🚨 Real Drowning Incident Drill (Water Rescue)")
+    print("  [2] 🏊 Real Overhead Community Pool (CCTV Angle)")
+    print("  [3] 📹 Live Interactive Webcam Mode (Test Yourself on Stage!)")
     print("  [4] 📂 Browse Any Video File from Computer (File Picker)")
     print("  [5] 🌐 Play directly from YouTube Link (NO Downloading!)")
     print("=" * 60)
@@ -63,8 +63,8 @@ def main():
         source = "assets/drowning_incident.mp4"
         pool_label = "RESCUE ZONE - CCTV 02"
     elif choice == "2":
-        source = "assets/lap_swimming.mp4"
-        pool_label = "LAP LANES - CCTV 01"
+        source = "assets/public_pool_aerial.mp4"
+        pool_label = "COMMUNITY POOL - CCTV 01"
     elif choice == "3":
         source = "0"
         pool_label = "STAGE WEBCAM - LIVE TEST"
