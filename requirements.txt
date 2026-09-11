@@ -1,0 +1,8 @@
+# PyTorch with CUDA 12.4 installed via:
+# pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+
+ultralytics>=8.3.0
+opencv-python>=4.10.0
+numpy>=1.26.0
+lapx>=0.5.5
+scipy>=1.13.0
