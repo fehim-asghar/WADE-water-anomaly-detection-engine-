@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/
+*.pyc
+__pycache__/
+
+# Model files
+*.pt
+*.onnx
+*.h5
+*.tflite
